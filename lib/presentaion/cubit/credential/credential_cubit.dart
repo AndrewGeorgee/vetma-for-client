@@ -59,21 +59,23 @@ class CredentialCubit extends Cubit<CredentialState> {
     emit(CredentialLoading());
     try {
       await signInUseCase.call(UserModel(email: email, password: password));
-   
-      emit(CredentialSuccess());
+
+      emit(const CredentialSuccess());
     } on SocketException catch (m) {
       emit(CredentialFailure(m.message.toString()));
     }
   }
- Future<void> signInAsDoctorSubmit({
+
+  Future<void> signInAsDoctorSubmit({
     required String email,
     required String password,
   }) async {
     emit(CredentialLoading());
     try {
-      await  signinAsDoctorUseCase.call(Doctors(email: email, password: password));
+      await signinAsDoctorUseCase
+          .call(Doctors(email: email, password: password));
       await getCurrentUIDUseCase.call();
-      emit(CredentialSuccess());
+      emit(const CredentialSuccess());
     } on SocketException catch (m) {
       emit(CredentialFailure(m.message.toString()));
     }
@@ -84,7 +86,7 @@ class CredentialCubit extends Cubit<CredentialState> {
     try {
       await googleSignInUseCase.call();
 
-      emit(CredentialSuccess());
+      emit(const CredentialSuccess());
     } on SocketException catch (m) {
       emit(CredentialFailure(m.message.toString()));
     }
@@ -98,13 +100,15 @@ class CredentialCubit extends Cubit<CredentialState> {
       await getCreateCurrentUserUseCase.call(user);
       await getCurrentUIDUseCase.call();
 
-      emit(CredentialSuccess());
+      emit(const CredentialSuccess());
     } on SocketException catch (m) {
       emit(CredentialFailure(m.message.toString()));
     }
   }
 
   Future<void> signUpDoctrSubmit({required Doctors doctors}) async {
+    emit(CredentialLoading());
+    emit(CredentialLoading());
     emit(CredentialLoading());
     try {
       await signUpDocotrUseCase
@@ -113,7 +117,10 @@ class CredentialCubit extends Cubit<CredentialState> {
       await getCreateCurrentDocotrUseCase.call(doctors);
 //  await getCurrentUIDUseCase.call();
 
-      emit(CredentialSuccess());
+      emit(const CredentialSuccess());
+      emit(const CredentialSuccess());
+      emit(const CredentialSuccess());
+      emit(const CredentialSuccess());
     } on SocketException catch (m) {
       emit(CredentialFailure(m.message.toString()));
     }
@@ -124,7 +131,7 @@ class CredentialCubit extends Cubit<CredentialState> {
     try {
       await verifyPhoneNumberUsecase.call(phoneNumber);
 
-      emit(CredentialSuccess());
+      emit(const CredentialSuccess());
     } on SocketException catch (m) {
       emit(CredentialFailure(m.message.toString()));
     }
@@ -136,7 +143,7 @@ class CredentialCubit extends Cubit<CredentialState> {
       await verifyOtpUsecase.call(otp);
       await getCurrentUIDUseCase.call();
 
-      emit(CredentialSuccess());
+      emit(const CredentialSuccess());
     } on SocketException catch (m) {
       emit(CredentialFailure(m.message.toString()));
     }
