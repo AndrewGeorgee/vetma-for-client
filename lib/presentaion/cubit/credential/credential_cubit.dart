@@ -102,8 +102,7 @@ class CredentialCubit extends Cubit<CredentialState> {
 
       emit(const CredentialSuccess());
       emit(const CredentialSuccess());
-      emit(const CredentialSuccess());
-      emit(const CredentialSuccess());
+
       emit(const CredentialSuccess());
     } on SocketException catch (m) {
       emit(CredentialFailure(m.message.toString()));
