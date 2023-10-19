@@ -27,6 +27,10 @@ class DoctorCubit extends Cubit<DoctorStates> {
       // log(${app.length} );
       // print(${app.length})
       emit(UserDoctorAppointmentSussedd(app));
+      emit(UserDoctorAppointmentSussedd(app));
+      emit(UserDoctorAppointmentSussedd(app));
+      emit(UserDoctorAppointmentSussedd(app));
+      emit(UserDoctorAppointmentSussedd(app));
     } on SocketException catch (_) {
       emit(UserDoctorAppointmentError());
     } catch (_) {
