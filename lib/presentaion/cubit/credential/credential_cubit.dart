@@ -95,7 +95,6 @@ class CredentialCubit extends Cubit<CredentialState> {
   Future<void> signUpSubmit({required UserModel user}) async {
     emit(CredentialLoading());
     emit(CredentialLoading());
-    emit(CredentialLoading());
     try {
       await signUpUseCase
           .call(UserModel(email: user.email, password: user.password));
