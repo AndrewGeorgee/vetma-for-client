@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:vetma_final_project/core/resources/colors.dart';
 import 'package:vetma_final_project/core/resources/icon_broken.dart';
+
 import '../../cubit/user_cubit/user_cubit.dart';
 import '../bottom_screen/home_screen.dart';
 import '../bottom_screen/notification_screen.dart';
-import '../bottom_screen/seting_screen.dart';
+import '../bottom_screen/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -20,13 +21,13 @@ class _MainScreenState extends State<MainScreen> {
   List screenBottomNav = [
     const HomeScreenBottomNav(),
     const NotificationScreenBottomNav(),
-    const SetingScreenNav(),
+    const ProfileScreenBottomNav(),
   ];
   void changeScreenBottom(int index) {
     setState(() {
       _currentIndex = index;
       if (index == 1) const NotificationScreenBottomNav();
-      if (index == 2) const SetingScreenNav();
+      if (index == 2) const ProfileScreenBottomNav();
     });
   }
 
@@ -36,7 +37,6 @@ class _MainScreenState extends State<MainScreen> {
 
     return Container(
       color: Colors.white,
-      
       child: StreamBuilder(
           stream: UserCubit.get(context)
               .getUserDataStream(FirebaseAuth.instance.currentUser!.uid),
