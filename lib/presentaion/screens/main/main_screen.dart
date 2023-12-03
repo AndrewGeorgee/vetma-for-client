@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:vetma_final_project/core/resources/colors.dart';
 import 'package:vetma_final_project/core/resources/icon_broken.dart';
+import 'package:vetma_final_project/presentaion/screens/bottom_screen/ai.dart';
 import '../../cubit/user_cubit/user_cubit.dart';
 import '../bottom_screen/home_screen.dart';
 import '../bottom_screen/notification_screen.dart';
-import '../bottom_screen/seting_screen.dart';
+import '../bottom_screen/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -20,13 +21,15 @@ class _MainScreenState extends State<MainScreen> {
   List screenBottomNav = [
     const HomeScreenBottomNav(),
     const NotificationScreenBottomNav(),
-    const SetingScreenNav(),
+    const AIScreen(),
+    const ProfileScreenBottomNav(),
   ];
   void changeScreenBottom(int index) {
     setState(() {
       _currentIndex = index;
       if (index == 1) const NotificationScreenBottomNav();
-      if (index == 2) const SetingScreenNav();
+      if (index == 2) const AIScreen();
+      if (index == 3) const ProfileScreenBottomNav();
     });
   }
 
@@ -78,7 +81,7 @@ class _MainScreenState extends State<MainScreen> {
                         //! Home Screen
                         GButton(
                           icon: IconBroken.Home,
-                          text: 'Home',
+                          text: '',
                           //  textSize: 20,
                           textStyle: TextStyle(
                               fontSize: 20,
@@ -88,7 +91,16 @@ class _MainScreenState extends State<MainScreen> {
                         //!  Notification Screen
                         GButton(
                           icon: IconBroken.Notification,
-                          text: 'Notification',
+                          text: '',
+
+                          textStyle: TextStyle(
+                              fontSize: 20,
+                              color: ColorManager.prymaryColor,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        GButton(
+                          icon: Icons.chat,
+                          text: '',
                           textStyle: TextStyle(
                               fontSize: 20,
                               color: ColorManager.prymaryColor,
@@ -97,7 +109,7 @@ class _MainScreenState extends State<MainScreen> {
                         //! Profile Screen
                         GButton(
                           icon: IconBroken.User,
-                          text: 'Profile',
+                          text: '',
                           textStyle: TextStyle(
                               fontSize: 20,
                               color: ColorManager.prymaryColor,
